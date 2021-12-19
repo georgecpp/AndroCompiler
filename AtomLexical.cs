@@ -17,7 +17,10 @@ namespace AndroCompiler
         InvalidAtom,
         TerminalAtom,
         ExpresieBinara,
-        ExpresieParanteze
+        ExpresieParanteze,
+        nr_intreg,
+        nr_float,
+        text,
     }
 
     class AtomLexical : Node

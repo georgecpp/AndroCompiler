@@ -51,6 +51,7 @@
     <Compile Include="ExpresieBinara.cs" />
     <Compile Include="ExpresieNumerica.cs" />
     <Compile Include="ExpresieParanteze.cs" />
+    <Compile Include="ExpresieText.cs" />
     <Compile Include="FileLab.cs" />
     <Compile Include="Lexer.cs" />
     <Compile Include="Node.cs" />
