@@ -20,7 +20,7 @@ namespace AndroCompiler
         ExpresieParanteze,
         nr_intreg,
         nr_float,
-        text,
+        text
     }
 
     class AtomLexical : Node

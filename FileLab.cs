@@ -139,15 +139,16 @@ namespace AndroCompiler
             else
             {
                 AfiseazaArbore(arbore.Root);
-                Console.WriteLine("\nResult = " + evaluare.getEvaluate+"\n\n");
+                Console.WriteLine("\nResult = " + evaluare.getEvaluate.ToString() +"\n\n");
             }
         }
 
         public string ReplaceValuesInExpression(string line, List<AndroVar> listVars)
         {
+            string linecpy = line;
             foreach(var x in listVars)
             {
-                if(line.Contains(x._identifier))
+                if(line.Contains(x._identifier) && !linecpy.Contains('"'))
                 {
                     line = line.Replace(x._identifier, x._val);
                 }

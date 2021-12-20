@@ -86,15 +86,50 @@ namespace AndroCompiler
 
         private Expresie parseFirstExpression()
         {
+            //if (currentAtomLexical.AtomType == atomType.ParantezaDeschisa)
+            //{
+            //    var stanga = getCurrAtomAndIncrement();
+            //    var expresie = parseTerms();
+            //    var dreapta = checkAtomType(atomType.ParantezaInchisa);
+            //    return new ExpresieParanteze(stanga, expresie, dreapta);
+            //}
+            //var numar = checkAtomType(atomType.nr_intreg);
+            //return new ExpresieNumerica(numar);
             if (currentAtomLexical.AtomType == atomType.ParantezaDeschisa)
             {
                 var stanga = getCurrAtomAndIncrement();
                 var expresie = parseTerms();
-                var dreapta = checkAtomType(atomType.ParantezaInchisa);
+                AtomLexical dreapta;
+                if (currentAtomLexical.AtomType == atomType.ParantezaInchisa)
+                {
+                    dreapta = getCurrAtomAndIncrement();
+                }
+                else
+                {
+                    errorList.Add($"Atom Lexical Invalid {currentAtomLexical.AtomType} se asteapta {atomType.ParantezaInchisa}");
+                    throw new Exception("Parser: Se astepta paranteza inchisa");
+                }
+
                 return new ExpresieParanteze(stanga, expresie, dreapta);
             }
-            var numar = checkAtomType(atomType.Numar);
-            return new ExpresieNumerica(numar);
+
+            var val = getCurrAtomAndIncrement();
+            return new ExpresieNumerica(val);
+            //switch (val.AtomType)
+            //{
+            //    case atomType.nr_intreg:
+            //        // do stuff
+            //        return new ExpresieNumerica(val);
+            //        break;
+            //    case atomType.nr_float:
+            //        // do stuff
+            //        break;
+            //    case atomType.text:
+            //        // do stuff
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
 
         public Expresie parseTerms()

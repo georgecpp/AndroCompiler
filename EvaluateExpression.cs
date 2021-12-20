@@ -15,11 +15,19 @@ namespace AndroCompiler
             exp = expresie;
         }
 
-        private int evaluate(Expresie expresie)
+        private object evaluate(Expresie expresie)
         {
             if (expresie is ExpresieNumerica n)
             {
-                return (int)n.Numar.Value;
+                switch(n.tip)
+                {
+                    case atomType.nr_float:
+                        return (decimal)n.Numar.Value;
+                    case atomType.nr_intreg:
+                        return (int)n.Numar.Value;
+                    case atomType.text:
+                        return (string)n.Numar.Value;
+                }
             }
             if (expresie is ExpresieParanteze p)
             {
@@ -33,24 +41,24 @@ namespace AndroCompiler
 
                 if (op.tip == atomType.Plus)
                 {
-                    return evaluate(stg) + evaluate(dr);
+                    return (dynamic) evaluate(stg) + (dynamic) evaluate(dr);
                 }
                 if (op.tip == atomType.Minus)
                 {
-                    return evaluate(stg) - evaluate(dr);
+                    return (dynamic) evaluate(stg) - (dynamic) evaluate(dr);
                 }
                 if (op.tip == atomType.Inmultire)
                 {
-                    return evaluate(stg) * evaluate(dr);
+                    return (dynamic) evaluate(stg) * (dynamic) evaluate(dr);
                 }
                 if (op.tip == atomType.Impartire)
                 {
-                    return evaluate(stg) / evaluate(dr);
+                    return (dynamic) evaluate(stg) / (dynamic) evaluate(dr);
                 }
             }
             throw new Exception("Expresie invalida!");
         }
 
-        public int getEvaluate => evaluate(exp);
+        public object getEvaluate => evaluate(exp);
     }
 }

@@ -15,7 +15,7 @@ namespace AndroCompiler
             Numar = numar;
         }
 
-        public override atomType tip => atomType.Numar;
+        public override atomType tip => Numar.AtomType;
 
         public override IEnumerable<Node> getChildrens()
         {
