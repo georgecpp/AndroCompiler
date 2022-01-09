@@ -33,11 +33,7 @@ namespace AndroCompiler
                 this.errorList = lexer.getErrorList();
             }
             arrayAtomLexical = atomLexicals.ToArray();
-            
-            //foreach (var i in arrayAtomLexical)
-            //{
-            //    Console.WriteLine(i.AtomType);
-            //}
+           
         }
 
         public List<string> getErrorList => this.errorList;

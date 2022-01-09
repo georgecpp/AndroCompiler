@@ -46,22 +46,9 @@ namespace AndroCompiler
             {
                 return new AtomLexical(atomType.TerminalAtom, currentIndex, "\0", null);
             }
-            // 121 + 33 * 2
 
             if (char.IsDigit(getSymbol))
             {
-                //string appendNumber = "";
-                //while (char.IsDigit(getSymbol))
-                //{
-                //    appendNumber += getSymbol;
-                //    incrementIndex();
-                //}
-                //if (!int.TryParse(appendNumber, out int result))
-                //{
-                //    errorList.Add("Error! Numar mult prea mare! Nu se poate face conversia la int!");
-                //}
-                //return new AtomLexical(atomType.Numar, currentIndex, appendNumber, result);
-
                 var start = this.currentIndex;
                 int dot = 0;
                 while(char.IsDigit(getSymbol) || getSymbol == '.')
